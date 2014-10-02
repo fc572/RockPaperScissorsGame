@@ -23,7 +23,7 @@ public class HumanPlayerTest
     }
 
     @Test
-    public void makeAmoveTest()
+    public void makeAmoveTest() throws Exception
     {
         humanPlayer.makeAmove();
         verify(readInput, atLeastOnce()).getTheUserInput();

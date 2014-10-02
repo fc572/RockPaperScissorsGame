@@ -1,3 +1,4 @@
+import com.game.rules.ApplyRules;
 import com.game.player.Player;
 import com.game.player.impl.ComputerPlayer;
 import com.game.player.impl.HumanPlayer;
@@ -8,7 +9,7 @@ public class Main {
     public static void main(String args[])
     {
         ReadInput readInput = new ReadInput(System.in, System.out);
-        Checking checker = new Checking();
+        ApplyRules checker = new ApplyRules();
         Score score = new Score();
         Player player1, player2;
 
@@ -40,6 +41,14 @@ public class Main {
         }
 
         Game game = new Game(readInput, score, checker, player1, player2);
-        game.gameLoop();
+
+        try
+        {
+            game.gameLoop();
+        }
+        catch (Exception e)
+        {
+            System.out.println("An error occurred in the game, sorry! " + e.getMessage());
+        }
     }
 }

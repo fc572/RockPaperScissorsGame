@@ -1,5 +1,6 @@
 package com.game.player.impl;
 
+import com.game.GameSign;
 import com.game.readandwrite.ReadInput;
 import com.game.player.Player;
 
@@ -14,8 +15,29 @@ public class HumanPlayer implements Player
     }
 
     @Override
-    public int makeAmove()
+    public GameSign makeAmove() throws Exception
     {
-        return readInput.getTheUserInput();
+        switch (readInput.getTheUserInput())
+        {
+            case 1:
+            {
+                return GameSign.ROCK;
+            }
+
+            case 2:
+            {
+                return GameSign.PAPER;
+            }
+
+            case 3:
+            {
+                return GameSign.SCISSORS;
+            }
+
+            default:
+            {
+                throw new Exception("There has been an error while making a move");
+            }
+        }
     }
 }

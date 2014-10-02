@@ -1,6 +1,8 @@
 package com.game.player;
 
+import com.game.GameSign;
+
 public interface Player
 {
-    public int makeAmove();
+    public GameSign makeAmove() throws Exception;
 }

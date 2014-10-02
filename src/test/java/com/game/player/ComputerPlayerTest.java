@@ -1,5 +1,6 @@
 package com.game.player;
 
+import com.game.GameSign;
 import com.game.player.impl.ComputerPlayer;
 import org.junit.Before;
 import org.junit.Test;
@@ -17,9 +18,9 @@ public class ComputerPlayerTest
     }
 
     @Test
-    public void makeAmoveTest()
+    public void makeAmoveTest()throws Exception
     {
-        int computerMadeAMove = computerPlayer.makeAmove();
-        assertTrue(computerMadeAMove > 0 && computerMadeAMove < 4);
+        GameSign computerMadeAMove = computerPlayer.makeAmove();
+        assertTrue((computerMadeAMove == GameSign.ROCK) || (computerMadeAMove == GameSign.PAPER) || (computerMadeAMove == GameSign.SCISSORS) );
     }
 }
