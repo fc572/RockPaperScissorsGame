@@ -22,5 +22,5 @@ public class ComputerPlayerTest
     {
         GameSign computerMadeAMove = computerPlayer.makeAmove();
         assertTrue((computerMadeAMove == GameSign.ROCK) || (computerMadeAMove == GameSign.PAPER) || (computerMadeAMove == GameSign.SCISSORS) );
-    }
+   }
 }

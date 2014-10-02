@@ -1,4 +1,4 @@
-package com.game.readandwrite;
+package com.game.inputandoutput;
 
 import com.game.GameSign;
 import org.junit.Before;

@@ -1,7 +1,7 @@
 package com.game.player.impl;
 
 import com.game.GameSign;
-import com.game.readandwrite.ReadOrWrite;
+import com.game.inputandoutput.ReadOrWrite;
 import com.game.player.Player;
 
 public class HumanPlayer implements Player

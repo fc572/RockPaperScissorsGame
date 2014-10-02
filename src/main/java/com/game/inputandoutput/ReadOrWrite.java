@@ -1,9 +1,10 @@
-package com.game.readandwrite;
+package com.game.inputandoutput;
 
 import com.game.GameSign;
 
 import java.io.InputStream;
 import java.io.PrintStream;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class ReadOrWrite
@@ -18,10 +19,7 @@ public class ReadOrWrite
 
     public GameSign getTheUserInput() {
         int input = ask("Please choose -- 1: Rock - 2: Paper - 3: Scissors");
-        while (input < 1 || input > 3)
-        {
-            input = ask("Please try again");
-        }
+
         if(input == 1)
         {
             return GameSign.ROCK;
@@ -36,25 +34,10 @@ public class ReadOrWrite
         }
     }
 
-    public int ask(String message) {
+    public int ask(String message)
+    {
         printToScreen(message);
         return readNextInt();
-    }
-
-    public String readNextLine()
-    {
-        String userInput;
-        try
-        {
-            userInput = scanner.nextLine();
-        }
-        catch (Exception ex)
-        {
-            scanner.nextLine(); //reads the /n char after the incorrect input effectively clearing
-            //the java.util.InputMismatchException exception
-            userInput = ""; // Forces the loop to go on even after receiving an invalid input
-        }
-        return userInput;
     }
 
     public int readNextInt()
@@ -64,11 +47,24 @@ public class ReadOrWrite
         {
             userInput = scanner.nextInt();
         }
-        catch (Exception ex)
+        catch(InputMismatchException e)
         {
-            userInput = 0; // Forces the loop to go on even after receiving an invalid input
+            scanner.nextLine();//to clear the exception so the app will not enter in infinite loop
+            userInput = 3;
         }
-        return userInput;
+
+        if(userInput == 1)
+        {
+            return 1;
+        }
+        else if(userInput == 2)
+        {
+            return 2;
+        }
+        else
+        {
+            return 3;
+        }
     }
 
     public void printToScreen(String message)

@@ -1,7 +1,7 @@
 import com.game.player.Player;
 import com.game.player.impl.ComputerPlayer;
 import com.game.player.impl.HumanPlayer;
-import com.game.readandwrite.ReadOrWrite;
+import com.game.inputandoutput.ReadOrWrite;
 import com.game.thegame.Game;
 
 public class Main {
@@ -13,7 +13,7 @@ public class Main {
 
         System.out.println("Choose 1 to play Human vs Human");
         System.out.println("Choose 2 to play Computer vs Computer");
-        System.out.println("Any key to play Human vs Computer");
+        System.out.println("Any Key to play Human vs Computer");
 
         int choiceOfPlayers = readOrWrite.readNextInt();
 

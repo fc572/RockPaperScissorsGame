@@ -4,17 +4,25 @@ import com.game.GameSign;
 import com.game.Result;
 import com.game.rules.ApplyRules;
 import com.game.player.Player;
-import com.game.readandwrite.ReadOrWrite;
+import com.game.inputandoutput.ReadOrWrite;
 import com.game.score.DisplayScore;
 import com.game.score.KeepTrackOfScore;
 
 public class Game
 {
+    private ReadOrWrite readOrWrite;
 
-    private String yesOrNo;
+    private Player player1;
+    private Player player2;
+
+    private ApplyRules checker;
+    private DisplayScore displayScore;
+    private KeepTrackOfScore keepTrackOfScore;
 
     private GameSign inputFromPlayer1;
     private GameSign inputFromPlayer2;
+
+    private int yesOrNo;
 
     public GameSign getInputFromPlayer1()
     {
@@ -35,15 +43,6 @@ public class Game
     {
         this.inputFromPlayer2 = inputFromPlayer2;
     }
-
-    private ReadOrWrite readOrWrite;
-
-    private Player player1;
-    private Player player2;
-
-    private ApplyRules checker;
-    private DisplayScore displayScore;
-    private KeepTrackOfScore keepTrackOfScore;
 
     public Game(ReadOrWrite readOrWrite, Player player1, Player player2)
     {
@@ -69,15 +68,15 @@ public class Game
             keepTrackOfScore.trackTheScore(resultChecked);
             displayScore.displayTheScore(resultChecked);
 
-            readOrWrite.printToScreen("Want to play again? N to exit, R to Reset the score, any Key to continue...");
+            readOrWrite.printToScreen("Want to play again? 1 to exit, 2 to Reset the score, 3 to continue...");
 
-            yesOrNo = readOrWrite.readNextLine();
+            yesOrNo = readOrWrite.readNextInt();
 
-            if(yesOrNo.equalsIgnoreCase("n"))
+            if(yesOrNo == 1)
             {
                 break;//get out of while loop
             }
-            else if (yesOrNo.equalsIgnoreCase("r"))
+            else if (yesOrNo == 2)
             {
                 keepTrackOfScore.resetScore();
             }
