@@ -22,7 +22,6 @@ public class ReadInputTest
     @Before
     public void setup()
     {
-        mockInputStream = mock(InputStream.class);
         mockPrintStream = mock(PrintStream.class);
     }
 

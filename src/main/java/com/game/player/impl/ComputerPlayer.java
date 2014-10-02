@@ -2,44 +2,31 @@ package com.game.player.impl;
 
 import com.game.player.Player;
 
-public class ComputerPlayer implements Player
-{
+public class ComputerPlayer implements Player{
+
     private int computerGesture;
 
-    private void setComputerGesture()
+    @Override
+    public int makeAmove()
     {
         computerGesture = (int) (Math.random() * 3);
 
         switch(computerGesture)
         {
             case 0:
-                computerGesture = 1;
-                break;
+                System.out.println("Computer chooses rock");
+                return 1;
 
             case 1:
-                computerGesture = 2;
-                break;
+                System.out.println("Computer chooses paper");
+                return 2;
 
             case 2:
-                computerGesture = 3;
-        }
-    }
+                System.out.println("Computer chooses scissor");
+                return 3;
 
-
-    public void readMoveFromUser()
-    {
-        setComputerGesture();
-        if(computerGesture == 1)
-        {
-            System.out.println("HAL chooses Rock");
-        }
-        else if(computerGesture == 2)
-        {
-            System.out.println("HAL chooses paper");
-        }
-        else if(computerGesture == 3)
-        {
-            System.out.println("HAL chooses scissor");
+            default:
+                return -1;
         }
     }
 }

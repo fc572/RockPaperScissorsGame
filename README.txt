@@ -1,15 +1,42 @@
-RockPaperScissorsGame
-=====================
+RockPaperScissors
+=================
 
-The game consists of two players that input a set of symbols that adhere to a set of rules.
+Due to the lack of time, (I know 1 week can be long but not when you have relatives
+visiting from Italy) I have done a quick search on the net and I have found this
+nice project http://codereview.stackexchange.com/questions/57301/rock-paper-scissors-game-in-java
+where the bulk of the game has already been implemented.
+Also there is no point in re-inventing the wheel.
 
-So there are 4 objects that we can represent in code:
-1) The game
-2) The input of symbols
-2) The players (Human or Computer)
-3) The rules of the game
+Stage 1 - Fix the bugs that are present now while making the code testable.
 
-The game object will be made of the other 3 objects so
-I will start coding a way for the players to make their input known, the ReadInput class.
+Also the code has already 1 bug as after the first game this is what happens.
+
+1st BUG: The answer to "Go to score menu" in given as invalid without user interaction
+
+Rock: 1, Paper: 2, Scissor: 3  //1st run prompt user for input
+3                              //1st run display user choice
+Computer chooses rock          //1st run Informing user of computer choice
+Lose                           //1st run display game result
+Go to score menu? y/n          //1st run prompt user for score menu
+n                              //1st run display user choice
+Want to play again? y/n        //1st run prompt user for another game
+y                              //1st run display user choice
+Rock: 1, Paper: 2, Scissor: 3  //2nd run prompt user for input
+1                              //2nd run display user choice
+Computer chooses scissor       //2nd run Informing user of computer choice
+Win!                           //2nd run display game result
+Go to score menu? y/n          //2nd run prompt user for input
+Invalid command! Continuing without going to score menu! //2nd run BUG: No user input read
+Want to play again? y/n        //2nd run displaying automatic choice
+
+2nd BUG: The application does not handle non numeric inputs
+
+Stage 2 -
+Start writing the test and to refactor the code that at the moment is not testable
+due to the lack of OO design.
+
+One of the more useful improvement that I can see is to create an interface
+for the Player and then implement two sub-classes, Human and Computer so that
+the game can then play Human vs Computer, Human vs Human or Computer vs Computer.
 
 

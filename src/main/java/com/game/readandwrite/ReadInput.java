@@ -23,11 +23,36 @@ public class ReadInput
 
     public int ask(String message) {
         printStream.println(message);
-        return scanner.nextInt();
+        return readNextInt();
     }
 
     public String readNextLine()
     {
-        return scanner.nextLine();
+        String userInput;
+        try
+        {
+            userInput = scanner.nextLine();
+        }
+        catch (Exception ex)
+        {
+            scanner.nextLine(); //reads the /n char after the incorrect input effectively clearing
+            //the java.util.InputMismatchException exception
+            userInput = ""; // Forces the loop to go on even after receiving an invalid input
+        }
+        return userInput;
+    }
+
+    public int readNextInt()
+    {
+        int userInput;
+        try
+        {
+            userInput = scanner.nextInt();
+        }
+        catch (Exception ex)
+        {
+            userInput = 0; // Forces the loop to go on even after receiving an invalid input
+        }
+        return userInput;
     }
 }
