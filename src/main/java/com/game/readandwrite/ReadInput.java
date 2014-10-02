@@ -1,5 +1,7 @@
 package com.game.readandwrite;
 
+import com.game.GameSign;
+
 import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.Scanner;
@@ -14,11 +16,24 @@ public class ReadInput
         this.printStream = printStream;
     }
 
-    public int getTheUserInput() {
+    public GameSign getTheUserInput() {
         int input = ask("Please choose -- 1: Rock - 2: Paper - 3: Scissors");
         while (input < 1 || input > 3)
+        {
             input = ask("Please try again");
-        return input;
+        }
+        if(input == 1)
+        {
+            return GameSign.ROCK;
+        }
+        else if(input == 2)
+        {
+            return GameSign.PAPER;
+        }
+        else
+        {
+            return GameSign.SCISSORS;
+        }
     }
 
     public int ask(String message) {

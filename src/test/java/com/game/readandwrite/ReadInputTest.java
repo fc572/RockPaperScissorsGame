@@ -1,6 +1,6 @@
 package com.game.readandwrite;
 
-import com.game.readandwrite.ReadInput;
+import com.game.GameSign;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -30,8 +30,8 @@ public class ReadInputTest
     {
         mockInputStream = new ByteArrayInputStream("1".getBytes());
         readInput = new ReadInput(mockInputStream, mockPrintStream);
-        int inputRead = readInput.getTheUserInput();
-        assertEquals(inputRead,1);
+        GameSign inputRead = readInput.getTheUserInput();
+        assertEquals(inputRead.getValue(),1);
     }
 
     @Test
@@ -39,8 +39,8 @@ public class ReadInputTest
     {
         mockInputStream = new ByteArrayInputStream("2".getBytes());
         readInput = new ReadInput(mockInputStream, mockPrintStream);
-        int inputRead = readInput.getTheUserInput();
-        assertEquals(inputRead,2);
+        GameSign inputRead = readInput.getTheUserInput();
+        assertEquals(inputRead.getValue(),2);
     }
 
     @Test
@@ -48,8 +48,8 @@ public class ReadInputTest
     {
         mockInputStream = new ByteArrayInputStream("3".getBytes());
         readInput = new ReadInput(mockInputStream, mockPrintStream);
-        int inputRead = readInput.getTheUserInput();
-        assertEquals(inputRead,3);
+        GameSign inputRead = readInput.getTheUserInput();
+        assertEquals(inputRead.getValue(),3);
 
     }
 }

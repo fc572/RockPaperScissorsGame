@@ -17,27 +17,13 @@ public class HumanPlayer implements Player
     @Override
     public GameSign makeAmove() throws Exception
     {
-        switch (readInput.getTheUserInput())
+        try
         {
-            case 1:
-            {
-                return GameSign.ROCK;
-            }
-
-            case 2:
-            {
-                return GameSign.PAPER;
-            }
-
-            case 3:
-            {
-                return GameSign.SCISSORS;
-            }
-
-            default:
-            {
+            return readInput.getTheUserInput();
+        }
+        catch (Exception e)
+        {
                 throw new Exception("There has been an error while making a move");
-            }
         }
     }
 }

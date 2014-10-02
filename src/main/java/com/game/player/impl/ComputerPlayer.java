@@ -5,10 +5,14 @@ import com.game.player.Player;
 
 public class ComputerPlayer implements Player{
 
+    private int computerGesture;
+
     @Override
     public GameSign makeAmove() throws Exception
     {
-        switch ((int) (Math.random() * 3))
+        computerGesture = (int) (Math.random() * 3);
+
+        switch (computerGesture)
         {
             case 1:
             {
