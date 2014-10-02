@@ -6,12 +6,12 @@ import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.Scanner;
 
-public class ReadInput
+public class ReadOrWrite
 {
     private Scanner scanner;
     private PrintStream printStream;
 
-    public ReadInput(InputStream inputStream, PrintStream printStream) {
+    public ReadOrWrite(InputStream inputStream, PrintStream printStream) {
         scanner = new Scanner(inputStream);
         this.printStream = printStream;
     }
@@ -37,7 +37,7 @@ public class ReadInput
     }
 
     public int ask(String message) {
-        printStream.println(message);
+        printToScreen(message);
         return readNextInt();
     }
 
@@ -69,5 +69,10 @@ public class ReadInput
             userInput = 0; // Forces the loop to go on even after receiving an invalid input
         }
         return userInput;
+    }
+
+    public void printToScreen(String message)
+    {
+        printStream.println(message);
     }
 }

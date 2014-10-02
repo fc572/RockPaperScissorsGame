@@ -1,7 +1,7 @@
 package com.game.player;
 
 import com.game.player.impl.HumanPlayer;
-import com.game.readandwrite.ReadInput;
+import com.game.readandwrite.ReadOrWrite;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -11,21 +11,21 @@ import static org.mockito.Mockito.verify;
 
 public class HumanPlayerTest
 {
-    private ReadInput readInput;
+    private ReadOrWrite readOrWrite;
     private HumanPlayer humanPlayer;
 
 
     @Before
     public void setup()
     {
-        readInput = mock(ReadInput.class);
-        humanPlayer = new HumanPlayer(readInput);
+        readOrWrite = mock(ReadOrWrite.class);
+        humanPlayer = new HumanPlayer(readOrWrite);
     }
 
     @Test
     public void makeAmoveTest() throws Exception
     {
         humanPlayer.makeAmove();
-        verify(readInput, atLeastOnce()).getTheUserInput();
+        verify(readOrWrite, atLeastOnce()).getTheUserInput();
     }
 }

@@ -12,9 +12,9 @@ import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
 
 
-public class ReadInputTest
+public class ReadOrWriteTest
 {
-    private ReadInput readInput;
+    private ReadOrWrite readOrWrite;
     private PrintStream mockPrintStream;
     private InputStream mockInputStream;
 
@@ -29,8 +29,8 @@ public class ReadInputTest
     public void checkForLowerBoundValue()
     {
         mockInputStream = new ByteArrayInputStream("1".getBytes());
-        readInput = new ReadInput(mockInputStream, mockPrintStream);
-        GameSign inputRead = readInput.getTheUserInput();
+        readOrWrite = new ReadOrWrite(mockInputStream, mockPrintStream);
+        GameSign inputRead = readOrWrite.getTheUserInput();
         assertEquals(inputRead.getValue(),1);
     }
 
@@ -38,8 +38,8 @@ public class ReadInputTest
     public void checkForValidInput() throws Exception
     {
         mockInputStream = new ByteArrayInputStream("2".getBytes());
-        readInput = new ReadInput(mockInputStream, mockPrintStream);
-        GameSign inputRead = readInput.getTheUserInput();
+        readOrWrite = new ReadOrWrite(mockInputStream, mockPrintStream);
+        GameSign inputRead = readOrWrite.getTheUserInput();
         assertEquals(inputRead.getValue(),2);
     }
 
@@ -47,8 +47,8 @@ public class ReadInputTest
     public void checkForUpperBoundValue()
     {
         mockInputStream = new ByteArrayInputStream("3".getBytes());
-        readInput = new ReadInput(mockInputStream, mockPrintStream);
-        GameSign inputRead = readInput.getTheUserInput();
+        readOrWrite = new ReadOrWrite(mockInputStream, mockPrintStream);
+        GameSign inputRead = readOrWrite.getTheUserInput();
         assertEquals(inputRead.getValue(),3);
 
     }

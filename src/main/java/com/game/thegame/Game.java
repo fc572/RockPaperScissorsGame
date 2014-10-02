@@ -1,8 +1,12 @@
+package com.game.thegame;
+
 import com.game.GameSign;
 import com.game.Result;
 import com.game.rules.ApplyRules;
 import com.game.player.Player;
-import com.game.readandwrite.ReadInput;
+import com.game.readandwrite.ReadOrWrite;
+import com.game.score.DisplayScore;
+import com.game.score.KeepTrackOfScore;
 
 public class Game
 {
@@ -32,24 +36,28 @@ public class Game
         this.inputFromPlayer2 = inputFromPlayer2;
     }
 
-    private ReadInput readInput;
+    private ReadOrWrite readOrWrite;
 
     private Player player1;
     private Player player2;
 
     private ApplyRules checker;
-    private Score score;
+    private DisplayScore displayScore;
+    private KeepTrackOfScore keepTrackOfScore;
 
-    public Game(ReadInput readInput, Score score, ApplyRules checker, Player player1, Player player2)
+    public Game(ReadOrWrite readOrWrite, Player player1, Player player2)
     {
-        this.score = score;
-        this.checker = checker;
-        this.readInput = readInput;
+        this.readOrWrite = readOrWrite;
         this.player1 = player1;
         this.player2 = player2;
+
+        keepTrackOfScore = new KeepTrackOfScore();
+        displayScore = new DisplayScore(readOrWrite, keepTrackOfScore);
+
+        checker = new ApplyRules();
     }
 
-    public void gameLoop() throws Exception
+    public void playTheGame() throws Exception
     {
         while (true)
         {
@@ -58,20 +66,20 @@ public class Game
 
             Result resultChecked = checker.check(getInputFromPlayer1(), getInputFromPlayer2());
 
-            System.out.println("Go to score menu? y/n");
-            yesOrNo = readInput.readNextLine();
-            if(yesOrNo.equalsIgnoreCase("y"))
+            keepTrackOfScore.trackTheScore(resultChecked);
+            displayScore.displayTheScore(resultChecked);
+
+            readOrWrite.printToScreen("Want to play again? N to exit, R to Reset the score, any Key to continue...");
+
+            yesOrNo = readOrWrite.readNextLine();
+
+            if(yesOrNo.equalsIgnoreCase("n"))
             {
-                score.ScoreMenu();
+                break;//get out of while loop
             }
-
-            System.out.println("Want to play again? Choose No to exit");
-
-            yesOrNo = readInput.readNextLine();
-
-            if(yesOrNo.equalsIgnoreCase("no") || yesOrNo.equalsIgnoreCase("n"))
+            else if (yesOrNo.equalsIgnoreCase("r"))
             {
-                break;
+                keepTrackOfScore.resetScore();
             }
         }
     }

@@ -1,17 +1,17 @@
 package com.game.player.impl;
 
 import com.game.GameSign;
-import com.game.readandwrite.ReadInput;
+import com.game.readandwrite.ReadOrWrite;
 import com.game.player.Player;
 
 public class HumanPlayer implements Player
 {
 
-    private ReadInput readInput;
+    private ReadOrWrite readOrWrite;
 
-    public HumanPlayer(ReadInput readInput)
+    public HumanPlayer(ReadOrWrite readOrWrite)
     {
-        this.readInput = readInput;
+        this.readOrWrite = readOrWrite;
     }
 
     @Override
@@ -19,11 +19,11 @@ public class HumanPlayer implements Player
     {
         try
         {
-            return readInput.getTheUserInput();
+            return readOrWrite.getTheUserInput();
         }
         catch (Exception e)
         {
-                throw new Exception("There has been an error while making a move");
+                throw new Exception("There has been an error while making a Human move");
         }
     }
 }
