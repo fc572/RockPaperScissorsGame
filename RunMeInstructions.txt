@@ -1,0 +1,13 @@
+This is a Maven project, so choose this option when importing into 
+you favourite IDE. (I have used Intellij)
+
+Let maven import run freely and when it is done, 
+build the project.
+
+On the 	project LifeCycle, please run the test they should be all green.
+(It works on my machine syndrome....)
+
+In the package game there is a class called StartTheGame, the main method is in there.
+To start the application just right click and select run StartTheGame.main()
+
+Have fun!

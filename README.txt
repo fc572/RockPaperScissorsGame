@@ -39,4 +39,17 @@ One of the more useful improvement that I can see is to create an interface
 for the Player and then implement two sub-classes, Human and Computer so that
 the game can then play Human vs Computer, Human vs Human or Computer vs Computer.
 
+************************FINAL COMMENTS********************************
+
+Although this exercise has caused me to work harder and longer than I anticipated,
+I have learned a lot in the mean time. This is because the original code was not testable
+at all, and I have found this out as I was going to try to use mockito and Junit.
+I have appreciated the power of the tests everytime I had to change something in order to
+make some portions of the code testable.
+
+At the end of the day it was a good fun and I hope you'll find this MVP good enough for
+a follow up interview.
+
+Kind Regards,
+Francesco.
 

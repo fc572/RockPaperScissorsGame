@@ -1,10 +1,12 @@
+package com.game.thegame;
+
+import com.game.inputandoutput.ReadOrWrite;
 import com.game.player.Player;
 import com.game.player.impl.ComputerPlayer;
 import com.game.player.impl.HumanPlayer;
-import com.game.inputandoutput.ReadOrWrite;
-import com.game.thegame.Game;
 
-public class Main {
+public class StartTheGame
+{
 
     public static void main(String args[])
     {

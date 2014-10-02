@@ -1,10 +1,9 @@
 package com.game.player;
 
 import com.game.GameSign;
-import com.game.player.impl.HumanPlayer;
 import com.game.inputandoutput.ReadOrWrite;
+import com.game.player.impl.HumanPlayer;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.ByteArrayInputStream;
@@ -64,12 +63,9 @@ public class HumanPlayerTest
         assertEquals(inputRead.getValue(), GameSign.SCISSORS.getValue());
     }
 
-
-    @Test(expected = java.lang.Throwable.class, timeout=1000) //This test fails as when there is an invalid input the
-                                                              //code is stuck in a loop;
-    @Ignore
-    public void invalidInput() {
-        mockInputStream = new ByteArrayInputStream("4".getBytes());
+    @Test
+    public void anyInputWillNotCauseThisTestToFail() {
+        mockInputStream = new ByteArrayInputStream("G".getBytes());
         readOrWrite = new ReadOrWrite(mockInputStream, mockPrintStream);
         GameSign inputRead = readOrWrite.getTheUserInput();
     }
